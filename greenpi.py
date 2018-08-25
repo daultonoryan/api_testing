@@ -10,9 +10,9 @@ GPIO.setmode(GPIO.BCM)
 
 
 def sensor_data_post(sensor_data):
-    headers = {"Authorization": "Token "}
+    headers = {"Authorization": "Token d906b53efa966d6dfa24224621801f25db6f637b"}
     try:
-        r = requests.post("", headers=headers, data=sensor_data)
+        r = requests.post("http://127.0.0.1:8000/sensors/", headers=headers, data=sensor_data)
         print(r)
     except Exception as e:
         print("post failure ", e)
@@ -54,7 +54,7 @@ def main():
                        "humidity": hum,
                        "soil_moisture": soil,
                        "light_status": True,
-                       "snapshot": "rpi_imgs/" + str(count) + ".jpg"}
+                       "snapshot": open("rpi_imgs/" + str(count) + ".jpg", "r")}
 
 	time.sleep(5)
 	count += 1
